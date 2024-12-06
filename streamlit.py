@@ -145,7 +145,7 @@ def defect_criteria(mask, max = 0.01):
   return [is_defective, ratio]
 
 def test(test_image_path):
-    golden_image = Template('template.png', a=50, b=300)
+    golden_image = Template(['template.png'], a=50, b=300)
     defect_img = Image.open(test_image_path)
     marked_defect = get_marked_image(defect_img, kernel_size=5, ideal=True)
     result, ratio = defect_criteria(marked_defect, max=0.0005)
