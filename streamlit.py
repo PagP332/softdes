@@ -156,6 +156,8 @@ def test(test_image_path):
 
 import streamlit as st
 
+file = None
+
 if file:
     test(file)
 else:
