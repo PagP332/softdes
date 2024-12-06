@@ -156,9 +156,9 @@ def test(test_image_path):
 
 import streamlit as st
 
-st.set_option('deprecation.showfileUploaderEncoding', False)
 if file:
     test(file)
 else:
     file = st.file_uploader("Upload images that either classify as an image of a mountain, street, glacier, building, sea, or a forest (PNG or JPG only)", type=["jpg", "png"])
+    st.set_option('deprecation.showfileUploaderEncoding', False)
 
