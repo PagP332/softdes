@@ -144,7 +144,22 @@ def defect_criteria(mask, max = 0.01):
   is_defective = ratio > max
   return [is_defective, ratio]
 
+def test(test_image_path):
+    golden_image = Template('/template.png', a=50, b=300)
+    defect_img = Image.open(test_image_path)
+    marked_defect = get_marked_image(defect_img, kernel_size=5, ideal=True)
+    result, ratio = defect_criteria(marked_defect, max=0.0005)
+    if result == True:
+        st.write("Image is defective")
+    else:
+        st.write("Image is OK")
 
 import streamlit as st
 
-st.write("SpotLess: An Application to your Quality Detection System")
+@st.cache(allow_output_mutation=True)
+st.set_option('deprecation.showfileUploaderEncoding', False)
+if file:
+    test(file)
+else:
+    file = st.file_uploader("Upload images that either classify as an image of a mountain, street, glacier, building, sea, or a forest (PNG or JPG only)", type=["jpg", "png"])
+
