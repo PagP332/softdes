@@ -95,7 +95,7 @@ def align_images(image, template, maxFeatures=500, keepPercent=0.2, debug=False)
 # https://www.mdpi.com/2076-3417/9/17/3598
 # https://ieeexplore.ieee.org/abstract/document/6223405
 
-def get_marked_image(image_src, kernel_size, rotation=0, ideal=True):
+def get_marked_image(image_src, golden_image, kernel_size, rotation=0, ideal=True):
     sample = np.asarray(image_src)
 
     # Rotate and align the sample image if necessary
@@ -147,7 +147,7 @@ def defect_criteria(mask, max = 0.01):
 def test(test_image_path):
     golden_image = Template(['template.png'], a=50, b=300)
     defect_img = Image.open(test_image_path)
-    marked_defect = get_marked_image(defect_img, kernel_size=5, ideal=True)
+    marked_defect = get_marked_image(defect_img, golden_image, kernel_size=5, ideal=True)
     result, ratio = defect_criteria(marked_defect, max=0.0005)
     if result == True:
         st.write("Image is defective")
