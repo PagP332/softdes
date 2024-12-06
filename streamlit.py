@@ -156,10 +156,12 @@ def test(test_image_path):
 
 import streamlit as st
 
-file = None
+is_visible = True
+
+if is_visible:
+    file = st.file_uploader("", type=["jpg", "png"])
 
 if file:
+    is_visible = False
     test(file)
-else:
-    file = st.file_uploader("", type=["jpg", "png"])
 
