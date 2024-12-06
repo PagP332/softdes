@@ -1,0 +1,5 @@
+numpy==1.26.4
+pillow==11.0.0
+imutils==0.5.4
+opencv-python
+scipy
