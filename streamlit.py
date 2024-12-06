@@ -156,7 +156,6 @@ def test(test_image_path):
 
 import streamlit as st
 
-@st.cache(allow_output_mutation=True)
 st.set_option('deprecation.showfileUploaderEncoding', False)
 if file:
     test(file)
