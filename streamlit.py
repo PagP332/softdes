@@ -1,6 +1,5 @@
 import numpy as np
 from PIL import Image
-import imutils
 import cv2
 from scipy import ndimage
 
@@ -69,10 +68,6 @@ def align_images(image, template, maxFeatures=500, keepPercent=0.2, debug=False)
     keep = int(len(matches) * keepPercent)
     matches = matches[:keep]
 
-    # Debug checking
-    if debug:
-        matchedVis = cv2.drawMatches(image, kpsA, template, kpsB, matches, None)
-        matchedVis = imutils.resize(matchedVis, width=1000)
 
     # Allocate memory for the keypoints (x, y)-coordinates from the top matches
     # We'll use these coordinates to compute our homography matrix
