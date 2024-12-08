@@ -150,9 +150,9 @@ def test(test_image_path):
     marked_defect = get_marked_image(defect_img, golden_image, kernel_size=5, ideal=True)
     result, ratio = defect_criteria(marked_defect, max=0.0005)
     if result == True:
-        st.write("Image is defective")
+        st.warning("Image is defective")
     else:
-        st.write("Image is OK")
+        st.success("Image is OK")
 
 import streamlit as st
 
